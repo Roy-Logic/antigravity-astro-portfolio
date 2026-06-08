@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Astro Learning Journey", 
+  description = "Follow my step-by-step journey of learning Astro, Tailwind CSS v4, TypeScript, and modern static site workflows." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Outfit (Body) and Plus Jakarta Sans (Headers) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Astro View Transitions / Client Router -->
+    <ClientRouter />
+  </head>
+  <body class="bg-dark-bg text-gray-200 flex flex-col min-h-screen relative antialiased selection:bg-primary/30 selection:text-white">
+    <!-- Ambient Glow Background Blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-dark-bg">
+      <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/10 blur-[120px] animate-blob-spin"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent/10 blur-[120px] animate-blob-spin-reverse"></div>
+    </div>
+
+    <!-- Header -->
+    <Header />
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col pt-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>

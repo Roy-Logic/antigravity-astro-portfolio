@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = [
+  { name: 'Astro components', level: '85%' },
+  { name: 'Tailwind CSS v4', level: '90%' },
+  { name: 'TypeScript', level: '75%' },
+  { name: 'Git & Version Control', level: '80%' },
+  { name: 'Static Site Architecture', level: '85%' },
+  { name: 'Vite Compilation', level: '70%' },
+];
+
+const steps = [
+  { title: 'Node.js Runtime', desc: 'The backbone of modern frontend tools. Installed and configured package.json scripts.' },
+  { title: 'Astro Framework', desc: 'Created an empty static site. Leveraged file-based routing and .astro files.' },
+  { title: 'Tailwind CSS v4', desc: 'Adopted the Vite plugin compiler, migrating configurations directly into modern CSS variables.' },
+  { title: 'Components & Layouts', desc: 'Created reusable, highly composable Header, Footer, and ProjectCard items.' },
+  { title: 'Publishing & Git', desc: 'Using Git branches, commits, and staging. Pushing repositories to GitHub.' },
+  { title: 'Cloudflare Pages CDN', desc: 'Configuring custom subdomains, continuous deployments (CI/CD), and asset caching.' },
+];
+---
+
+<BaseLayout 
+  title="About | Astro Learning Journey" 
+  description="Learn about my background, current learning objectives, and details of my modern frontend stack."
+>
+  <section class="py-8 md:py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    
+    <!-- Profile & Bio (Left side) -->
+    <div class="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28">
+      <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+        <!-- Visual design elements inside card -->
+        <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/10 blur-xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-accent/10 blur-xl"></div>
+        
+        <h2 class="text-3xl font-extrabold font-display text-white">The Student Persona</h2>
+        <span class="text-xs text-accent font-mono font-semibold uppercase tracking-wider block mt-1">Aspiring Static Architect</span>
+        
+        <p class="text-sm text-gray-400 leading-relaxed font-light mt-6">
+          I am a junior frontend developer taking a deep-dive into standard compliance, performance-driven web development, and compiler-level optimizations. 
+        </p>
+        <p class="text-sm text-gray-400 leading-relaxed font-light mt-4">
+          Rather than relying on heavy client-side Javascript frameworks (like React or Vue), I am exploring how Astro generates lightweight HTML outputs, allowing fast page interactions on the client.
+        </p>
+      </div>
+
+      <!-- Skills Card -->
+      <div class="glass-panel p-8 rounded-2xl">
+        <h3 class="text-xl font-bold font-display text-white mb-6">Skills Mastery</h3>
+        <div class="flex flex-col gap-4">
+          {skills.map((skill) => (
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span class="text-gray-300 font-mono">{skill.name}</span>
+                <span class="text-accent">{skill.level}</span>
+              </div>
+              <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div class="h-full bg-gradient-to-r from-primary to-accent rounded-full" style={`width: ${skill.level}`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning Workflow Timeline (Right side) -->
+    <div class="lg:col-span-7 flex flex-col gap-6">
+      <div class="glass-panel p-8 md:p-10 rounded-2xl">
+        <h3 class="text-2xl font-bold font-display text-white mb-2">Detailed Learning Workflow</h3>
+        <p class="text-sm text-gray-400 font-light mb-8">
+          The step-by-step curriculum I followed to configure, design, compile, and deploy this web application:
+        </p>
+
+        <!-- Vertical Timeline -->
+        <div class="relative pl-6 md:pl-8 border-l border-white/10 flex flex-col gap-8">
+          {steps.map((step, idx) => (
+            <div class="relative group">
+              <!-- Dot Indicator -->
+              <div class="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-dark-bg border-2 border-primary flex items-center justify-center group-hover:border-accent transition-colors">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary group-hover:bg-accent transition-colors"></div>
+              </div>
+              
+              <span class="text-[10px] bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-full font-mono font-medium">
+                Step 0{idx + 1}
+              </span>
+              <h4 class="text-lg font-bold text-white mt-2 group-hover:text-accent transition-colors duration-200">
+                {step.title}
+              </h4>
+              <p class="text-sm text-gray-400 font-light mt-1.5 leading-relaxed">
+                {step.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </section>
+</BaseLayout>

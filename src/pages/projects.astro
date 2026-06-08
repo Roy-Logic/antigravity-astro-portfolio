@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Astro Markdown Blog',
+    description: 'A static-generated blog featuring Markdown support, custom components, frontmatter data extraction, and tags layout pages.',
+    tags: ['Astro', 'Markdown', 'TypeScript', 'SEO'],
+    githubLink: 'https://github.com',
+    liveLink: 'https://example.com',
+    gradientFrom: 'from-violet-600',
+    gradientTo: 'to-indigo-500',
+  },
+  {
+    title: 'Tailwind v4 Component Library',
+    description: 'A playground building sleek, responsive elements using Tailwind CSS v4 CSS-first variables and glassmorphic designs.',
+    tags: ['Tailwind v4', 'HTML', 'Vanilla CSS', 'Aesthetics'],
+    githubLink: 'https://github.com',
+    liveLink: 'https://example.com',
+    gradientFrom: 'from-cyan-500',
+    gradientTo: 'to-blue-600',
+  },
+  {
+    title: 'Weather Dashboard API',
+    description: 'An interactive dashboard integrating third-party APIs with Astro server endpoints, rendering hourly charts and live forecasts.',
+    tags: ['Astro Endpoints', 'JavaScript', 'Fetch API', 'Charts'],
+    githubLink: 'https://github.com',
+    gradientFrom: 'from-pink-500',
+    gradientTo: 'to-rose-600',
+  },
+  {
+    title: 'Interactive Markdown Editor',
+    description: 'A browser-based editor that parses Markdown in real-time. Features draft auto-saving to local storage and exports to HTML.',
+    tags: ['TypeScript', 'Local Storage', 'HTML5', 'Regex'],
+    githubLink: 'https://github.com',
+    liveLink: 'https://example.com',
+    gradientFrom: 'from-amber-400',
+    gradientTo: 'to-orange-500',
+  },
+  {
+    title: 'Personal Finance Tracker',
+    description: 'A clean financial planner allowing entry logging, categorization, monthly expense reports, and SVG pie chart data visualization.',
+    tags: ['Astro', 'TypeScript', 'SVG Charts', 'CSS Grid'],
+    githubLink: 'https://github.com',
+    gradientFrom: 'from-emerald-400',
+    gradientTo: 'to-teal-600',
+  },
+  {
+    title: 'CSS Art Sandbox',
+    description: 'A creative lab containing complex animations, 3D CSS objects, scroll parallax, and scroll-driven CSS page-reveal hooks.',
+    tags: ['CSS Animations', '3D Transforms', 'Responsive', 'HTML'],
+    githubLink: 'https://github.com',
+    liveLink: 'https://example.com',
+    gradientFrom: 'from-fuchsia-500',
+    gradientTo: 'to-purple-700',
+  },
+];
+---
+
+<BaseLayout 
+  title="Projects | Astro Learning Journey" 
+  description="Examine the projects I have developed while learning component structures and CSS-first styling implementations."
+>
+  <section class="py-8 md:py-12">
+    <!-- Header Summary -->
+    <div class="max-w-2xl mb-12">
+      <h1 class="text-4xl font-extrabold font-display text-white">Learning Sandbox Projects</h1>
+      <p class="text-sm text-gray-400 leading-relaxed mt-2 font-light">
+        A collection of prototype projects built to master Astro routing, client interactions, state management, and modern CSS integrations.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
